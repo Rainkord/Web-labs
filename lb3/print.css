@@ -1,0 +1,38 @@
+@media print {
+  header,
+  nav,
+  footer,
+  button,
+  form {
+    display: none !important;
+  }
+
+  body {
+    margin: 0;
+    color: #000000;
+    background: #ffffff;
+    font-size: 14px;
+  }
+
+  a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .dishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .dish {
+    border: 1px solid #000000;
+    border-radius: 0;
+    filter: none;
+    padding: 10px;
+  }
+
+  .dish__img {
+    border-radius: 0;
+  }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЛанчBox — вход</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+  <form class="auth" action="https://httpbin.org/post" method="POST">
+    <h1 class="auth__title">Вход в ЛанчBox</h1>
+
+    <label class="form__label" for="login">Логин</label>
+    <input class="form__input" type="text" id="login" name="login" placeholder="Ваш логин" required>
+
+    <label class="form__label" for="password">Пароль</label>
+    <input class="form__input" type="password" id="password" name="password" placeholder="Ваш пароль" required>
+
+    <label class="form__choice">
+      <input type="checkbox" name="remember"> Запомнить меня
+    </label>
+
+    <button class="form__button" type="submit">Войти</button>
+
+    <p class="auth__back"><a href="index.html">← На главную</a></p>
+  </form>
+</body>
+</html>
