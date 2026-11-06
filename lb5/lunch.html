@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ЛанчBox — сделать заказ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="lunch.css">
+  <link rel="stylesheet" href="print.css" media="print">
+</head>
+<body>
+  <header>
+    <h1>ЛанчBox</h1>
+    <nav class="nav">
+      <a class="nav__link" href="index.html">Главная</a>
+      <a class="nav__link active" href="lunch.html">Собрать ланч</a>
+      <a class="nav__link" href="#order">Сделать заказ</a>
+      <a class="nav__link" href="index.html#feedback">Обратная связь</a>
+      <a class="nav__link" href="auth.html">Вход</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="menu-section">
+      <h2>Главные блюда</h2>
+      <div class="filters" data-filter-category="main">
+        <button class="filter" type="button" data-kind="fish">рыбное</button>
+        <button class="filter" type="button" data-kind="meat">мясное</button>
+        <button class="filter" type="button" data-kind="veg">вегетарианское</button>
+      </div>
+      <div class="dishes" id="main-list"></div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Супы</h2>
+      <div class="filters" data-filter-category="soup">
+        <button class="filter" type="button" data-kind="fish">рыбный</button>
+        <button class="filter" type="button" data-kind="meat">мясной</button>
+        <button class="filter" type="button" data-kind="veg">вегетарианский</button>
+      </div>
+      <div class="dishes" id="soup-list"></div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Салаты и стартеры</h2>
+      <div class="filters" data-filter-category="salad">
+        <button class="filter" type="button" data-kind="fish">рыбный</button>
+        <button class="filter" type="button" data-kind="meat">мясной</button>
+        <button class="filter" type="button" data-kind="veg">вегетарианский</button>
+      </div>
+      <div class="dishes" id="salad-list"></div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Напитки</h2>
+      <div class="filters" data-filter-category="drink">
+        <button class="filter" type="button" data-kind="cold">холодный</button>
+        <button class="filter" type="button" data-kind="hot">горячий</button>
+      </div>
+      <div class="dishes" id="drink-list"></div>
+    </section>
+
+    <section class="menu-section">
+      <h2>Десерты</h2>
+      <div class="filters" data-filter-category="dessert">
+        <button class="filter" type="button" data-kind="small">маленькая порция</button>
+        <button class="filter" type="button" data-kind="medium">средняя порция</button>
+        <button class="filter" type="button" data-kind="large">большая порция</button>
+      </div>
+      <div class="dishes" id="dessert-list"></div>
+    </section>
+
+    <section id="order" class="order">
+      <h2>Сделать заказ</h2>
+      <form class="order__form" action="https://httpbin.org/post" method="POST">
+        <div class="order__summary">
+          <h3>Ваш заказ</h3>
+          <p class="order__empty" id="order-empty">Ничего не выбрано</p>
+
+          <div class="order__category" data-order-category="soup" hidden>
+            <p class="order__cat">Суп</p>
+            <p class="order__dish">Блюдо не выбрано</p>
+          </div>
+
+          <div class="order__category" data-order-category="main" hidden>
+            <p class="order__cat">Главное блюдо</p>
+            <p class="order__dish">Блюдо не выбрано</p>
+          </div>
+
+          <div class="order__category" data-order-category="salad" hidden>
+            <p class="order__cat">Салат/стартер</p>
+            <p class="order__dish">Блюдо не выбрано</p>
+          </div>
+
+          <div class="order__category" data-order-category="drink" hidden>
+            <p class="order__cat">Напиток</p>
+            <p class="order__dish">Напиток не выбран</p>
+          </div>
+
+          <div class="order__category" data-order-category="dessert" hidden>
+            <p class="order__cat">Десерт</p>
+            <p class="order__dish">Десерт не выбран</p>
+          </div>
+
+          <div class="order__total" id="order-total-block" hidden>
+            <p>Стоимость заказа:</p>
+            <p id="order-total">0 руб.</p>
+          </div>
+
+          <label class="form__label" for="comment">Комментарии к заказу</label>
+          <textarea class="form__input form__textarea" id="comment" name="comment" rows="3" placeholder="Например, без лука"></textarea>
+        </div>
+
+        <div class="order__data">
+          <h3>Ваши данные</h3>
+
+          <label class="form__label" for="order-name">Имя</label>
+          <input class="form__input" type="text" id="order-name" name="name" placeholder="Иван" required>
+
+          <label class="form__label" for="order-email">Email</label>
+          <input class="form__input" type="email" id="order-email" name="email" placeholder="mail@example.com" required>
+
+          <label class="form__choice">
+            <input type="checkbox" name="subscribe" checked> Получать информацию о скидках и акциях
+          </label>
+
+          <label class="form__label" for="order-phone">Номер телефона</label>
+          <input class="form__input" type="tel" id="order-phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+
+          <label class="form__label" for="order-address">Адрес доставки</label>
+          <input class="form__input" type="text" id="order-address" name="address" placeholder="Москва, ул. Тверская, д. 67" required>
+
+          <p class="order__note">Доставка осуществляется только по Москве</p>
+
+          <p class="order__label">Время доставки</p>
+          <label class="form__choice">
+            <input type="radio" name="time" value="asap" checked> Как можно скорее
+          </label>
+          <label class="form__choice">
+            <input type="radio" name="time" value="exact"> К указанному времени
+          </label>
+
+          <label class="form__label" for="delivery-time">Укажите время доставки</label>
+          <input class="form__input" type="time" id="delivery-time" name="delivery-time" min="07:00" max="23:00">
+          <p class="order__note">Доступное время доставки с 7:00 до 23:00</p>
+
+          <input type="hidden" id="order-soup" name="soup">
+          <input type="hidden" id="order-main" name="main">
+          <input type="hidden" id="order-salad" name="salad">
+          <input type="hidden" id="order-drink" name="drink">
+          <input type="hidden" id="order-dessert" name="dessert">
+
+          <div class="order__buttons">
+            <button class="form__button form__button--reset" type="reset">Сбросить</button>
+            <button class="form__button" type="submit">Отправить</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer id="contacts">
+    <p>Адрес: Москва, ул. Тверская, д. 67</p>
+    <p>Телефон: <a href="tel:+79245401877">+7 (924) 540-18-77</a></p>
+    <p>Почта: <a href="mailto:theelderdragonking@gmail.com">theelderdragonking@gmail.com</a></p>
+    <p>Работаем ежедневно с 9:00 до 21:00</p>
+  </footer>
+
+  <script src="dishes.js"></script>
+  <script src="render.js"></script>
+  <script src="filter.js"></script>
+  <script src="order.js"></script>
+</body>
+</html>
